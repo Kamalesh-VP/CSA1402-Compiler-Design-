@@ -1,16 +1,15 @@
 %{
-/* C declarations */
 #include <stdio.h>
 %}
 
-/* Definitions (optional) */
+%%
+
+[a-zA-Z]+      { printf("WORD: %s\n", yytext); }
+[0-9]+         { printf("NUMBER: %s\n", yytext); }
+.              { /* Ignore other characters */ }
 
 %%
-/* Rules section */
-pattern1    { action1; }
-pattern2    { action2; }
-%%
-/* User subroutines */
+
 int yywrap()
 {
     return 1;
@@ -18,6 +17,7 @@ int yywrap()
 
 int main()
 {
+    printf("Enter input: ");
     yylex();
     return 0;
 }
